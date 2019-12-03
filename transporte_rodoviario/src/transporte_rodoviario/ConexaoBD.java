@@ -17,7 +17,7 @@ public class ConexaoBD {
     private final String JDBC_DRIVER = "org.mariadb.jdbc.Driver";
     private final String SENHA = "";
     private final String USUARIO = "root"; 
-    private final String URL_CONEXAO = "jdbc:mariadb://localhost:3306/transporte_rodoviaria";
+    private final String URL_CONEXAO = "jdbc:mariadb://localhost:3306/transporte_rodoviario";
     
     public Connection getConexao(){
         Connection c = null;
