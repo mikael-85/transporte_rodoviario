@@ -27,6 +27,10 @@ public void cadastrar(){
    novo.setidViagem(this.tela.leLong());
    this.tela.exibe("nomeCliente: ");
    novo.setnomeCliente(this.tela.leString());
+   this.tela.exibe("dataReserva: ");
+   novo.setdataReserva(this.tela.leDate());
+   this.tela.exibe("horaReserva: ");
+   novo.sethoraReserva(this.tela.leString());
    this.dao.cadastrar(novo);
 }
 
@@ -40,6 +44,10 @@ public void alterar(){
        this.tela.exibe("Digite os dados a seguir: ");
        this.tela.exibe("nomeCliente: ");
        consulta.get(0).setnomeCliente(this.tela.leString());
+       this.tela.exibe("dataReserva: ");
+       consulta.get(0).setdataReserva(this.tela.leDate());
+       this.tela.exibe("horaReserva: ");
+       consulta.get(0).sethoraReserva(this.tela.leString());
        this.dao.alterar(consulta.get(0));
    }else{
        this.tela.exibe("Erro: Bilhete nao encontrado(a)!");
@@ -73,7 +81,11 @@ public ArrayList<BilheteModelo> pesquisarInterna(){
 @Override
 public void pesquisar(){
    this.tela.exibe("Pesquisa de Bilhetes:");
-   this.tela.imprimirArrayList(pesquisarInterna());
+   ArrayList<BilheteModelo> resultado = pesquisarInterna();
+   this.tela.imprimirArrayList(resultado);
+   if(resultado.size() == 1){
+       this.tela.exibe(this.dao.verificaDesconto(resultado.get(0)));
+   }
 }
 
 @Override

@@ -10,6 +10,8 @@ public class BilheteModelo implements EntidadeModelo {
 private Long idPoltrona;
 private Long idViagem;
 private String nomeCliente;
+private Date dataReserva;
+private String horaReserva;
 
 /* Metodos Get e Set */
 public Long getidPoltrona() {
@@ -36,12 +38,30 @@ public void setnomeCliente(String nomeCliente) {
     this.nomeCliente = nomeCliente;
 }
 
+public Date getdataReserva() {
+    return this.dataReserva;
+}
+
+public void setdataReserva(Date dataReserva) {
+    this.dataReserva = dataReserva;
+}
+
+public String gethoraReserva() {
+    return this.horaReserva;
+}
+
+public void sethoraReserva(String horaReserva) {
+    this.horaReserva = horaReserva;
+}
+
 @Override
 public String toString() {
    String print = "";
    print += "idPoltrona: " + this.getidPoltrona() + "\n" ;
    print += "idViagem: " + this.getidViagem() + "\n" ;
    print += "nomeCliente: " + this.getnomeCliente() + "\n" ;
+   print += "dataReserva: " + this.getdataReserva() + "\n" ;
+   print += "horaReserva: " + this.gethoraReserva() + "\n" ;
    return print;
 }
 }

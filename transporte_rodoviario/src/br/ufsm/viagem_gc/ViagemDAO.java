@@ -51,6 +51,8 @@ public void cadastrarBilhetesSemReserva(ViagemModelo viagem){
         novoBilhete.setidViagem(viagem.getidViagem());
         novoBilhete.setidPoltrona(new Long(i));
         novoBilhete.setnomeCliente(null);
+        novoBilhete.setdataReserva(null);
+        novoBilhete.sethoraReserva(null);
         this.bilhete.cadastrar(novoBilhete);
     }
 }

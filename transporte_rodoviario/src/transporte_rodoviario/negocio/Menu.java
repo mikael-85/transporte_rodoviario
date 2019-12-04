@@ -8,6 +8,7 @@ package transporte_rodoviario.negocio;
 import br.ufsm.bilhete_gc.BilhetePrincipal;
 import java.util.Scanner;
 import br.ufsm.cidade_gc.CidadePrincipal;
+import br.ufsm.desconto_gc.DescontoPrincipal;
 import br.ufsm.intermediaria_gc.IntermediariaPrincipal;
 import br.ufsm.marca_gc.MarcaPrincipal;
 import br.ufsm.onibus_gc.OnibusPrincipal;
@@ -28,6 +29,7 @@ public class Menu {
     TrechoPrincipal trecho = new TrechoPrincipal();
     MarcaPrincipal marca = new MarcaPrincipal();
     IntermediariaPrincipal intermediaria = new IntermediariaPrincipal();
+    DescontoPrincipal desconto = new DescontoPrincipal();
     
     String[] args;
     
@@ -45,6 +47,7 @@ public class Menu {
             System.out.println("5 - Trecho");
             System.out.println("6 - Marca do Onibus");
             System.out.println("7 - Cidade Intermediaria");
+            System.out.println("8 - Desconto");
             System.out.println("0 - Sair ");
             leitura = Integer.parseInt(this.entrada.nextLine());
             opcao = leitura;
@@ -76,6 +79,10 @@ public class Menu {
                     break;  
                 case 7:
                     intermediaria.main(args);
+                    System.out.println(opcao);
+                    break;
+                case 8:
+                    desconto.main(args);
                     System.out.println(opcao);
                     break;    
                 case 0:
