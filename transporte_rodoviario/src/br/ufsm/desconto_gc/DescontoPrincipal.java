@@ -20,7 +20,7 @@ public static void main(String[] args) {
        tela.exibe("3 - Pesquisar Desconto ");
        tela.exibe("4 - Remover Desconto ");
        tela.exibe("5 - Imprimir Todos(as) Descontos ");
-       tela.exibe("0 - Sair ");
+       tela.exibe("0 - Voltar ");
 
        opcao = tela.leInteger();
 

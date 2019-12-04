@@ -20,7 +20,7 @@ public static void main(String[] args) {
        tela.exibe("3 - Pesquisar Marca ");
        tela.exibe("4 - Remover Marca ");
        tela.exibe("5 - Imprimir Todos(as) Marcas ");
-       tela.exibe("0 - Sair ");
+       tela.exibe("0 - Voltar ");
 
        opcao = tela.leInteger();
 
