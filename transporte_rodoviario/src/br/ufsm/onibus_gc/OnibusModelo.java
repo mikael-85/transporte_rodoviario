@@ -8,8 +8,7 @@ import java.sql.Date;
 public class OnibusModelo implements EntidadeModelo {
 /* Atributos */
 private Long idOnibus;
-private String marcaModelo;
-private Long numeroDePoltronas;
+private Long idMarca;
 
 /* Metodos Get e Set */
 public Long getidOnibus() {
@@ -20,28 +19,19 @@ public void setidOnibus(Long idOnibus) {
     this.idOnibus = idOnibus;
 }
 
-public String getmarcaModelo() {
-    return this.marcaModelo;
+public Long getidMarca() {
+    return this.idMarca;
 }
 
-public void setmarcaModelo(String marcaModelo) {
-    this.marcaModelo = marcaModelo;
-}
-
-public Long getnumeroDePoltronas() {
-    return this.numeroDePoltronas;
-}
-
-public void setnumeroDePoltronas(Long numeroDePoltronas) {
-    this.numeroDePoltronas = numeroDePoltronas;
+public void setidMarca(Long idMarca) {
+    this.idMarca = idMarca;
 }
 
 @Override
 public String toString() {
    String print = "";
    print += "idOnibus: " + this.getidOnibus() + "\n" ;
-   print += "marcaModelo: " + this.getmarcaModelo() + "\n" ;
-   print += "numeroDePoltronas: " + this.getnumeroDePoltronas() + "\n" ;
+   print += "idMarca: " + this.getidMarca() + "\n" ;
    return print;
 }
 }

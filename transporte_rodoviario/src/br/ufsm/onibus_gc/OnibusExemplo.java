@@ -23,10 +23,8 @@ public void cadastrar(){
    this.tela.exibe("Digite os dados a seguir: ");
    this.tela.exibe("idOnibus: ");
    novo.setidOnibus(this.tela.leLong());
-   this.tela.exibe("marcaModelo: ");
-   novo.setmarcaModelo(this.tela.leString());
-   this.tela.exibe("numeroDePoltronas: ");
-   novo.setnumeroDePoltronas(this.tela.leLong());
+   this.tela.exibe("idMarca: ");
+   novo.setidMarca(this.tela.leLong());
    this.dao.cadastrar(novo);
 }
 
@@ -38,10 +36,8 @@ public void alterar(){
    if(consulta.size() == 1){
        this.tela.imprimirArrayList(consulta);
        this.tela.exibe("Digite os dados a seguir: ");
-       this.tela.exibe("marcaModelo: ");
-       consulta.get(0).setmarcaModelo(this.tela.leString());
-       this.tela.exibe("numeroDePoltronas: ");
-       consulta.get(0).setnumeroDePoltronas(this.tela.leLong());
+       this.tela.exibe("idMarca: ");
+       consulta.get(0).setidMarca(this.tela.leLong());
        this.dao.alterar(consulta.get(0));
    }else{
        this.tela.exibe("Erro: Onibus nao encontrado(a)!");
