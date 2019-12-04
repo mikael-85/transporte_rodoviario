@@ -15,12 +15,12 @@ public class BilhetePrincipal {
             tela.exibe("Bilhete ");
             tela.exibe("Escolha uma opcao: ");
 //            tela.exibe("1 - Cadastrar Bilhete ");
-            tela.exibe("2 - Adicionar Reserva Poltrona ");
-            tela.exibe("3 - Pesquisar Bilhete(s) Reservado(s)");
-            tela.exibe("4 - Remover Reserva Poltrona ");
-            tela.exibe("5 - Imprimir Todos(as) Bilhetes ");
-            tela.exibe("6 - Poltronas Disponiveis Nesta Viagem ");
-            tela.exibe("7 - Poltronas Ocupadas Nesta Viagem ");
+            tela.exibe("1 - Adicionar Reserva Poltrona ");
+            tela.exibe("2 - Pesquisar Bilhete(s) Reservado(s)");
+            tela.exibe("3 - Remover Reserva Poltrona ");
+            tela.exibe("4 - Imprimir Todos(as) Bilhetes ");
+            tela.exibe("5 - Poltronas Disponiveis Nesta Viagem ");
+            tela.exibe("6 - Poltronas Ocupadas Nesta Viagem ");
             tela.exibe("0 - Voltar ");
 
             opcao = tela.leInteger();
@@ -29,22 +29,22 @@ public class BilhetePrincipal {
 //                case 1:
 //                    exemplo.cadastrar();
 //                    break;
-                case 2:
+                case 1:
                     exemplo.alterar();
                     break;
-                case 3:
+                case 2:
                     exemplo.pesquisar();
                     break;
-                case 4:
+                case 3:
                     exemplo.remover();
                     break;
-                case 5:
+                case 4:
                     exemplo.imprimirTodos();
                     break;
-                case 6:
+                case 5:
                     exemplo.pesquisaPoltronasDisponiveis();
                     break;
-                case 7:
+                case 6:
                     exemplo.pesquisaPoltronasNaoDisponiveis();
                     break;
                 case 0:
