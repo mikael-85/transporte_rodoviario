@@ -38,8 +38,6 @@ public void alterar(){
    if(consulta.size() == 1){
        this.tela.imprimirArrayList(consulta);
        this.tela.exibe("Digite os dados a seguir: ");
-       this.tela.exibe("idTrecho: ");
-       consulta.get(0).setidTrecho(this.tela.leLong());
        this.tela.exibe("sequencia: ");
        consulta.get(0).setsequencia(this.tela.leLong());
        this.dao.alterar(consulta.get(0));
@@ -66,6 +64,8 @@ public ArrayList<IntermediariaModelo> pesquisarInterna(){
    this.tela.exibe("Digite a informacao a seguir: ");
    this.tela.exibe("idCidade: ");
    atual.setidCidade(this.tela.leLong());
+   this.tela.exibe("idTrecho: ");
+   atual.setidTrecho(this.tela.leLong());
    consulta = this.dao.pesquisar(atual);
    return consulta;
 }

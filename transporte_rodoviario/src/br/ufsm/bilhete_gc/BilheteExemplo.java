@@ -38,8 +38,6 @@ public void alterar(){
    if(consulta.size() == 1){
        this.tela.imprimirArrayList(consulta);
        this.tela.exibe("Digite os dados a seguir: ");
-       this.tela.exibe("idViagem: ");
-       consulta.get(0).setidViagem(this.tela.leLong());
        this.tela.exibe("nomeCliente: ");
        consulta.get(0).setnomeCliente(this.tela.leString());
        this.dao.alterar(consulta.get(0));
@@ -66,6 +64,8 @@ public ArrayList<BilheteModelo> pesquisarInterna(){
    this.tela.exibe("Digite a informacao a seguir: ");
    this.tela.exibe("idPoltrona: ");
    atual.setidPoltrona(this.tela.leLong());
+   this.tela.exibe("idViagem: ");
+   atual.setidViagem(this.tela.leLong());
    consulta = this.dao.pesquisar(atual);
    return consulta;
 }
@@ -81,4 +81,14 @@ public void imprimirTodos(){
    this.tela.exibe("Lista de Bilhetes: ");
    this.tela.imprimirArrayList(this.dao.imprimirTodos());
 }
+
+//public void pesquisaPoltronasDisponiveis(){
+//    this.tela.exibe("Pesquisa de Poltronas Disponiveis na viagem:");
+//    ArrayList<BilheteModelo> consulta;
+//   BilheteModelo atual = new BilheteModelo();
+//   this.tela.exibe("Digite a informacao a seguir: ");
+//   this.tela.exibe("idViagem: ");
+//   atual.setidViagem(this.tela.leLong());
+//   consulta = this.dao.pesquisar(atual);
+//}
 }

@@ -55,10 +55,11 @@ public void alterar(IntermediariaModelo intermediaria){
    try {
       Connection conexao = this.bd.getConexao();
       PreparedStatement sql = conexao.prepareStatement(
-      "UPDATE intermediaria SET idTrecho = ?, sequencia = ? WHERE idCidade = ?");
-       sql.setLong(3, intermediaria.getidCidade());
-       sql.setLong(1, intermediaria.getidTrecho());
-       sql.setLong(2, intermediaria.getsequencia());
+      "UPDATE intermediaria SET sequencia = ? WHERE idCidade = ? AND idTrecho = ?");
+      sql.setLong(1, intermediaria.getsequencia());
+       sql.setLong(2, intermediaria.getidCidade());
+       sql.setLong(3, intermediaria.getidTrecho());
+       
        sql.execute();
        this.tela.sucessoAlteracao();
        sql.close();
@@ -73,8 +74,9 @@ public void remover(IntermediariaModelo intermediaria){
    try {
        Connection conexao = this.bd.getConexao();
        PreparedStatement sql = conexao.prepareStatement(
-       "DELETE FROM intermediaria WHERE idCidade = ?");
+       "DELETE FROM intermediaria WHERE idCidade = ? AND idTrecho = ?");
        sql.setLong(1, intermediaria.getidCidade());
+       sql.setLong(2, intermediaria.getidTrecho());
        sql.execute();
        this.tela.sucessoExclusao();
        sql.close();
@@ -91,8 +93,9 @@ public ArrayList<IntermediariaModelo> pesquisar(IntermediariaModelo intermediari
    try {
        Connection conexao = this.bd.getConexao();
        PreparedStatement sql = conexao.prepareStatement(
-       "SELECT * FROM intermediaria WHERE idCidade = ?");
+       "SELECT * FROM intermediaria WHERE idCidade = ? AND idTrecho = ?");
        sql.setLong(1, intermediaria.getidCidade());
+       sql.setLong(2, intermediaria.getidTrecho());
        ResultSet resultado = sql.executeQuery();
        resultadosConsulta = resultadoConsulta(resultado);
        resultado.close();

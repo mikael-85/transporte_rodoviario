@@ -20,6 +20,7 @@ public static void main(String[] args) {
        tela.exibe("3 - Pesquisar Bilhete ");
        tela.exibe("4 - Remover Bilhete ");
        tela.exibe("5 - Imprimir Todos(as) Bilhetes ");
+       tela.exibe("6 - Poltronas Disponiveis Nesta Viagem ");
        tela.exibe("0 - Sair ");
 
        opcao = tela.leInteger();

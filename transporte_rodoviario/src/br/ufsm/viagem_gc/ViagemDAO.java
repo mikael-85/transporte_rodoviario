@@ -10,14 +10,49 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.sql.ResultSet;
+import br.ufsm.bilhete_gc.BilheteDAO;
+import br.ufsm.bilhete_gc.BilheteModelo;
 
 public class ViagemDAO implements EntidadeDAO<ViagemModelo> {
 private ConexaoBD bd;
 private InputOutputTela tela;
+private BilheteDAO bilhete;
 
 public ViagemDAO(InputOutputTela tela){
    this.bd = new ConexaoBD();
    this.tela = tela;
+   this.bilhete = new BilheteDAO(tela);
+}
+
+public void cadastrarBilhetesSemReserva(ViagemModelo viagem){
+    int numeroDePoltronas = 0;
+    try {
+        Connection conexao = this.bd.getConexao();
+        PreparedStatement sql = conexao.prepareStatement(
+        "select numeroDePoltronas from Marca where idMarca in (select idMarca from Onibus where idOnibus in (select idOnibus from Viagem where idViagem = ?))");
+        sql.setLong(1, viagem.getidViagem());
+        ResultSet resultado = sql.executeQuery();
+        try {
+            while(resultado.next()){
+                numeroDePoltronas = (int)resultado.getLong("numeroDePoltronas");
+            }
+        } catch (SQLException ex){
+            System.err.println(ex.getMessage());
+        }
+        resultado.close();
+        sql.close();
+        conexao.close();
+    } catch (SQLException ex) {
+        System.err.println(ex.getMessage());
+    }
+    //select numeroDePoltronas from Marca where idMarca in (select idMarca from Onibus where idOnibus in (select idOnibus from Viagem where idViagem = 1));
+    for (int i = 1; i <= numeroDePoltronas; i++) {
+        BilheteModelo novoBilhete = new BilheteModelo();
+        novoBilhete.setidViagem(viagem.getidViagem());
+        novoBilhete.setidPoltrona(new Long(i));
+        novoBilhete.setnomeCliente(null);
+        this.bilhete.cadastrar(novoBilhete);
+    }
 }
 
 @Override

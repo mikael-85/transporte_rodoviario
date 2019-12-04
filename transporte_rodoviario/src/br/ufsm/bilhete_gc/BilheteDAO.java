@@ -55,10 +55,10 @@ public void alterar(BilheteModelo bilhete){
    try {
       Connection conexao = this.bd.getConexao();
       PreparedStatement sql = conexao.prepareStatement(
-      "UPDATE bilhete SET idViagem = ?, nomeCliente = ? WHERE idPoltrona = ?");
-       sql.setLong(3, bilhete.getidPoltrona());
-       sql.setLong(1, bilhete.getidViagem());
-       sql.setString(2, bilhete.getnomeCliente());
+      "UPDATE bilhete SET nomeCliente = ? WHERE idPoltrona = ? AND idViagem = ?");
+      sql.setString(1, bilhete.getnomeCliente());
+       sql.setLong(2, bilhete.getidPoltrona());
+       sql.setLong(3, bilhete.getidViagem());
        sql.execute();
        this.tela.sucessoAlteracao();
        sql.close();
@@ -73,8 +73,9 @@ public void remover(BilheteModelo bilhete){
    try {
        Connection conexao = this.bd.getConexao();
        PreparedStatement sql = conexao.prepareStatement(
-       "DELETE FROM bilhete WHERE idPoltrona = ?");
+       "DELETE FROM bilhete WHERE idPoltrona = ? AND idViagem = ?");
        sql.setLong(1, bilhete.getidPoltrona());
+       sql.setLong(2, bilhete.getidViagem());
        sql.execute();
        this.tela.sucessoExclusao();
        sql.close();
@@ -91,8 +92,9 @@ public ArrayList<BilheteModelo> pesquisar(BilheteModelo bilhete){
    try {
        Connection conexao = this.bd.getConexao();
        PreparedStatement sql = conexao.prepareStatement(
-       "SELECT * FROM bilhete WHERE idPoltrona = ?");
+       "SELECT * FROM bilhete WHERE idPoltrona = ? AND idViagem = ?");
        sql.setLong(1, bilhete.getidPoltrona());
+       sql.setLong(2, bilhete.getidViagem());
        ResultSet resultado = sql.executeQuery();
        resultadosConsulta = resultadoConsulta(resultado);
        resultado.close();
@@ -104,6 +106,25 @@ public ArrayList<BilheteModelo> pesquisar(BilheteModelo bilhete){
    return resultadosConsulta;
 }
 
+//fazer
+//public ArrayList<BilheteModelo> pesquisarPoltronasDisponiveisNaViagem(BilheteModelo bilhete){
+//   ArrayList<BilheteModelo> resultadosConsulta = new ArrayList<BilheteModelo>();
+//   try {
+//       Connection conexao = this.bd.getConexao();
+//       PreparedStatement sql = conexao.prepareStatement(
+//       "SELECT * FROM bilhete WHERE idViagem = ?");
+//       sql.setLong(1, bilhete.getidViagem());
+//       ResultSet resultado = sql.executeQuery();
+//       resultadosConsulta = resultadoConsulta(resultado);
+//       resultado.close();
+//       sql.close();
+//       conexao.close();
+//   } catch (SQLException ex) {
+//       System.err.println(ex.getMessage());
+//   }
+//   return resultadosConsulta;
+//}
+//
 @Override
 public ArrayList<BilheteModelo> imprimirTodos(){
    ArrayList<BilheteModelo> resultadosConsulta = new ArrayList<BilheteModelo>();

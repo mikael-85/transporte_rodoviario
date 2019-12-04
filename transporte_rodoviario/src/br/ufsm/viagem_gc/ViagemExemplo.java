@@ -19,7 +19,7 @@ public ViagemExemplo (InputOutputTela tela){
 @Override
 public void cadastrar(){
    ViagemModelo novo = new ViagemModelo();
-   this.tela.exibe("Cadastro de Viagems:");
+   this.tela.exibe("Cadastro de Viagens:");
    this.tela.exibe("Digite os dados a seguir: ");
    this.tela.exibe("idViagem: ");
    novo.setidViagem(this.tela.leLong());
@@ -36,6 +36,7 @@ public void cadastrar(){
    this.tela.exibe("horaDestino: ");
    novo.sethoraDestino(this.tela.leString());
    this.dao.cadastrar(novo);
+   this.dao.cadastrarBilhetesSemReserva(novo);
 }
 
 @Override
