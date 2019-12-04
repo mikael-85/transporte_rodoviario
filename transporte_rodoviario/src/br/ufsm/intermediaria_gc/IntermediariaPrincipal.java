@@ -20,7 +20,7 @@ public static void main(String[] args) {
        tela.exibe("3 - Pesquisar Intermediaria ");
        tela.exibe("4 - Remover Intermediaria ");
        tela.exibe("5 - Imprimir Todos(as) Intermediarias ");
-       tela.exibe("0 - Sair ");
+       tela.exibe("0 - Voltar ");
 
        opcao = tela.leInteger();
 
