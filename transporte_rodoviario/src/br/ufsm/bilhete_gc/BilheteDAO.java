@@ -73,11 +73,12 @@ public void remover(BilheteModelo bilhete){
    try {
        Connection conexao = this.bd.getConexao();
        PreparedStatement sql = conexao.prepareStatement(
-       "DELETE FROM bilhete WHERE idPoltrona = ? AND idViagem = ?");
+       "UPDATE bilhete SET nomeCliente = NULL WHERE idPoltrona = ? AND idViagem = ?");
        sql.setLong(1, bilhete.getidPoltrona());
        sql.setLong(2, bilhete.getidViagem());
        sql.execute();
-       this.tela.sucessoExclusao();
+       //this.tela.sucessoExclusao();
+       this.tela.exibe("Reserva removida com sucesso.");
        sql.close();
        conexao.close();
 
@@ -106,25 +107,42 @@ public ArrayList<BilheteModelo> pesquisar(BilheteModelo bilhete){
    return resultadosConsulta;
 }
 
-//fazer
-//public ArrayList<BilheteModelo> pesquisarPoltronasDisponiveisNaViagem(BilheteModelo bilhete){
-//   ArrayList<BilheteModelo> resultadosConsulta = new ArrayList<BilheteModelo>();
-//   try {
-//       Connection conexao = this.bd.getConexao();
-//       PreparedStatement sql = conexao.prepareStatement(
-//       "SELECT * FROM bilhete WHERE idViagem = ?");
-//       sql.setLong(1, bilhete.getidViagem());
-//       ResultSet resultado = sql.executeQuery();
-//       resultadosConsulta = resultadoConsulta(resultado);
-//       resultado.close();
-//       sql.close();
-//       conexao.close();
-//   } catch (SQLException ex) {
-//       System.err.println(ex.getMessage());
-//   }
-//   return resultadosConsulta;
-//}
-//
+public ArrayList<BilheteModelo> pesquisarPoltronasDisponiveisNaViagem(BilheteModelo bilhete){
+   ArrayList<BilheteModelo> resultadosConsulta = new ArrayList<BilheteModelo>();
+   try {
+       Connection conexao = this.bd.getConexao();
+       PreparedStatement sql = conexao.prepareStatement(
+       "SELECT * FROM bilhete WHERE idViagem = ? AND nomeCliente IS NULL");
+       sql.setLong(1, bilhete.getidViagem());
+       ResultSet resultado = sql.executeQuery();
+       resultadosConsulta = resultadoConsulta(resultado);
+       resultado.close();
+       sql.close();
+       conexao.close();
+   } catch (SQLException ex) {
+       System.err.println(ex.getMessage());
+   }
+   return resultadosConsulta;
+}
+
+public ArrayList<BilheteModelo> pesquisarPoltronasNaoDisponiveisNaViagem(BilheteModelo bilhete){
+   ArrayList<BilheteModelo> resultadosConsulta = new ArrayList<BilheteModelo>();
+   try {
+       Connection conexao = this.bd.getConexao();
+       PreparedStatement sql = conexao.prepareStatement(
+       "SELECT * FROM bilhete WHERE idViagem = ? AND nomeCliente IS NOT NULL");
+       sql.setLong(1, bilhete.getidViagem());
+       ResultSet resultado = sql.executeQuery();
+       resultadosConsulta = resultadoConsulta(resultado);
+       resultado.close();
+       sql.close();
+       conexao.close();
+   } catch (SQLException ex) {
+       System.err.println(ex.getMessage());
+   }
+   return resultadosConsulta;
+}
+
 @Override
 public ArrayList<BilheteModelo> imprimirTodos(){
    ArrayList<BilheteModelo> resultadosConsulta = new ArrayList<BilheteModelo>();

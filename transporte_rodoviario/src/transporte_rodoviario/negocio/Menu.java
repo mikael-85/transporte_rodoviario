@@ -36,7 +36,7 @@ public class Menu {
         int opcao = -1;
         
         while (opcao != 0) {
-            System.out.println("CRUD gerado da tabela Cidade ");
+            System.out.println("Transporte Rodoviario - Mikael Santellano");
             System.out.println("Escolha uma opcao: ");
             System.out.println("1 - Bilhete");
             System.out.println("2 - Cidade");

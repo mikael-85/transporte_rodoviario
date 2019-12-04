@@ -49,7 +49,7 @@ public void alterar(){
 @Override
 public void remover(){
    ArrayList<BilheteModelo> consulta;
-   this.tela.exibe("Remover Bilhete:");
+   this.tela.exibe("Remover Reserva Poltrona:");
    consulta = pesquisarInterna();
    if(consulta.size() == 1){
        this.dao.remover(consulta.get(0));
@@ -82,13 +82,29 @@ public void imprimirTodos(){
    this.tela.imprimirArrayList(this.dao.imprimirTodos());
 }
 
-//public void pesquisaPoltronasDisponiveis(){
-//    this.tela.exibe("Pesquisa de Poltronas Disponiveis na viagem:");
-//    ArrayList<BilheteModelo> consulta;
-//   BilheteModelo atual = new BilheteModelo();
-//   this.tela.exibe("Digite a informacao a seguir: ");
-//   this.tela.exibe("idViagem: ");
-//   atual.setidViagem(this.tela.leLong());
-//   consulta = this.dao.pesquisar(atual);
-//}
+public void pesquisaPoltronasDisponiveis(){
+    this.tela.exibe("Pesquisa de Poltronas Disponiveis na Viagem:");
+    ArrayList<BilheteModelo> consulta;
+   BilheteModelo atual = new BilheteModelo();
+   this.tela.exibe("Digite a informacao a seguir: ");
+   this.tela.exibe("idViagem: ");
+   atual.setidViagem(this.tela.leLong());
+   consulta = this.dao.pesquisarPoltronasDisponiveisNaViagem(atual);
+   this.tela.exibe("Pesquisa de Poltronas Disponiveis:");
+   this.tela.imprimirArrayList(consulta);
+   this.tela.exibe("Quantidade de Poltronas Disponiveis: "+consulta.size());
+}
+
+public void pesquisaPoltronasNaoDisponiveis(){
+    this.tela.exibe("Pesquisa de Poltronas Reservadas na viagem:");
+    ArrayList<BilheteModelo> consulta;
+   BilheteModelo atual = new BilheteModelo();
+   this.tela.exibe("Digite a informacao a seguir: ");
+   this.tela.exibe("idViagem: ");
+   atual.setidViagem(this.tela.leLong());
+   consulta = this.dao.pesquisarPoltronasNaoDisponiveisNaViagem(atual);
+   this.tela.exibe("Pesquisa de Poltronas Reservadas:");
+   this.tela.imprimirArrayList(consulta);
+   this.tela.exibe("Quantidade de Poltronas Reservadas: "+consulta.size());
+}
 }
