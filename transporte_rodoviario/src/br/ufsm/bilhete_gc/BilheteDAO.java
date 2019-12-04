@@ -32,7 +32,7 @@ public void cadastrar(BilheteModelo bilhete){
        sql.setLong(2, bilhete.getidViagem());
        sql.setString(3, bilhete.getnomeCliente());
        sql.execute();
-       this.tela.sucessoCadastro();
+       //this.tela.sucessoCadastro();
 
    } catch (SQLException ex) {
        this.tela.imprimeErro(ex.getMessage());
