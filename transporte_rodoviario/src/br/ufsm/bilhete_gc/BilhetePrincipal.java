@@ -15,8 +15,8 @@ public class BilhetePrincipal {
             tela.exibe("Bilhete ");
             tela.exibe("Escolha uma opcao: ");
 //            tela.exibe("1 - Cadastrar Bilhete ");
-            tela.exibe("2 - Alterar Bilhete ");
-            tela.exibe("3 - Pesquisar Bilhete ");
+            tela.exibe("2 - Adicionar Reserva Poltrona ");
+            tela.exibe("3 - Pesquisar Bilhete(s) Reservado(s)");
             tela.exibe("4 - Remover Reserva Poltrona ");
             tela.exibe("5 - Imprimir Todos(as) Bilhetes ");
             tela.exibe("6 - Poltronas Disponiveis Nesta Viagem ");
