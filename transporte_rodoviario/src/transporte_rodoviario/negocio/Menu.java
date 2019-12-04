@@ -8,6 +8,11 @@ package transporte_rodoviario.negocio;
 import br.ufsm.bilhete_gc.BilhetePrincipal;
 import java.util.Scanner;
 import br.ufsm.cidade_gc.CidadePrincipal;
+import br.ufsm.intermediaria_gc.IntermediariaPrincipal;
+import br.ufsm.marca_gc.MarcaPrincipal;
+import br.ufsm.onibus_gc.OnibusPrincipal;
+import br.ufsm.trecho_gc.TrechoPrincipal;
+import br.ufsm.viagem_gc.ViagemPrincipal;
 
 /**
  *
@@ -18,6 +23,12 @@ public class Menu {
     Integer leitura;
     CidadePrincipal cidade = new CidadePrincipal();
     BilhetePrincipal bilhete = new BilhetePrincipal();
+    ViagemPrincipal viagem = new ViagemPrincipal();
+    OnibusPrincipal onibus = new OnibusPrincipal();
+    TrechoPrincipal trecho = new TrechoPrincipal();
+    MarcaPrincipal marca = new MarcaPrincipal();
+    IntermediariaPrincipal intermediaria = new IntermediariaPrincipal();
+    
     String[] args;
     
     public void menu_inicial(){
@@ -38,12 +49,35 @@ public class Menu {
             leitura = Integer.parseInt(this.entrada.nextLine());
             opcao = leitura;
            
-
             switch (opcao) {
+                case 1:
+                    bilhete.main(args);
+                    System.out.println(opcao);
+                    break;
                 case 2:
                     cidade.main(args);
                     System.out.println(opcao);
                     break;
+                case 3:
+                    viagem.main(args);
+                    System.out.println(opcao);
+                    break;
+                case 4:
+                    onibus.main(args);
+                    System.out.println(opcao);
+                    break;
+                case 5:
+                    trecho.main(args);
+                    System.out.println(opcao);
+                    break;
+                case 6:
+                    marca.main(args);
+                    System.out.println(opcao);
+                    break;  
+                case 7:
+                    intermediaria.main(args);
+                    System.out.println(opcao);
+                    break;    
                 case 0:
                     break;
                 default:
