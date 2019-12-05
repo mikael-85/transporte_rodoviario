@@ -32,7 +32,8 @@ public static void main(String[] args) {
                exemplo.alterar();
                break;
            case 3:
-               exemplo.pesquisar();
+               //exemplo.pesquisar();
+               exemplo.pesquisarViagemTrechoIntermediaria();
                break;
            case 4:
                exemplo.remover();

@@ -6,14 +6,20 @@ import br.ufsm.gerador_cruds2.*;
 import java.sql.Date;
 
 import java.util.ArrayList;
+import br.ufsm.trecho_gc.*;
+import br.ufsm.intermediaria_gc.*;
 
 public class ViagemExemplo implements EntidadeExemplo {
 private InputOutputTela tela;
 private ViagemDAO dao;
+private TrechoDAO trechoDAO;
+private IntermediariaDAO intermediariaDAO;
 
 public ViagemExemplo (InputOutputTela tela){
    this.tela = tela;
    this.dao = new ViagemDAO(tela);
+   this.trechoDAO = new TrechoDAO(tela);
+   this.intermediariaDAO = new IntermediariaDAO(tela);
 }
 
 @Override
@@ -89,8 +95,28 @@ public ArrayList<ViagemModelo> pesquisarInterna(){
 
 @Override
 public void pesquisar(){
-   this.tela.exibe("Pesquisa de Viagems:");
+   this.tela.exibe("Pesquisa de Viagens:");
    this.tela.imprimirArrayList(pesquisarInterna());
+}
+
+public void pesquisarViagemTrechoIntermediaria(){
+    this.tela.exibe("Pesquisa de Viagens:");
+    ArrayList<ViagemModelo> consulta;
+    ViagemModelo atual = new ViagemModelo();
+    this.tela.exibe("Digite a informacao a seguir: ");
+    this.tela.exibe("idViagem: ");
+    Long idViagem = this.tela.leLong();
+    atual.setidViagem(idViagem);
+    consulta = this.dao.pesquisar(atual);
+    this.tela.imprimirArrayList(consulta);
+    this.tela.exibe("Trecho da Viagem:");
+    TrechoModelo trecho = new TrechoModelo();
+    trecho.setidTrecho(consulta.get(0).getidTrecho());
+    this.trechoDAO.getTela().imprimirArrayList(this.trechoDAO.pesquisar(trecho));
+    this.tela.exibe("Cidades Intermediarias:");
+    IntermediariaModelo intermediaria = new IntermediariaModelo();
+    intermediaria.setidTrecho(trecho.getidTrecho());
+    this.intermediariaDAO.getTela().imprimirArrayList(this.intermediariaDAO.pesquisarTrecho(intermediaria));
 }
 
 @Override

@@ -107,6 +107,24 @@ public ArrayList<IntermediariaModelo> pesquisar(IntermediariaModelo intermediari
    return resultadosConsulta;
 }
 
+public ArrayList<IntermediariaModelo> pesquisarTrecho(IntermediariaModelo intermediaria){
+   ArrayList<IntermediariaModelo> resultadosConsulta = new ArrayList<IntermediariaModelo>();
+   try {
+       Connection conexao = this.bd.getConexao();
+       PreparedStatement sql = conexao.prepareStatement(
+       "SELECT * FROM intermediaria WHERE idTrecho = ? ORDER BY sequencia ASC");
+       sql.setLong(1, intermediaria.getidTrecho());
+       ResultSet resultado = sql.executeQuery();
+       resultadosConsulta = resultadoConsulta(resultado);
+       resultado.close();
+       sql.close();
+       conexao.close();
+   } catch (SQLException ex) {
+       System.err.println(ex.getMessage());
+   }
+   return resultadosConsulta;
+}
+
 @Override
 public ArrayList<IntermediariaModelo> imprimirTodos(){
    ArrayList<IntermediariaModelo> resultadosConsulta = new ArrayList<IntermediariaModelo>();
@@ -141,4 +159,9 @@ public ArrayList<IntermediariaModelo> resultadoConsulta(ResultSet resposta){
    }
    return resultados;
 }
+
+    public InputOutputTela getTela() {
+        return tela;
+    }
+
 }

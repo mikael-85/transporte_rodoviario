@@ -138,4 +138,9 @@ public ArrayList<TrechoModelo> resultadoConsulta(ResultSet resposta){
    }
    return resultados;
 }
+
+    public InputOutputTela getTela() {
+        return tela;
+    }
+
 }

@@ -76,6 +76,17 @@ public void pesquisar(){
    this.tela.imprimirArrayList(pesquisarInterna());
 }
 
+public void pesquisarTrecho(){
+   ArrayList<IntermediariaModelo> consulta;
+   IntermediariaModelo atual = new IntermediariaModelo();
+   this.tela.exibe("Pesquisa de Cidades Intermediarias por Trecho:");
+   this.tela.exibe("Digite a informacao a seguir: ");
+   this.tela.exibe("idTrecho: ");
+   atual.setidTrecho(this.tela.leLong());
+   consulta = this.dao.pesquisarTrecho(atual);
+   this.tela.imprimirArrayList(consulta);
+}
+
 @Override
 public void imprimirTodos(){
    this.tela.exibe("Lista de Intermediarias: ");
